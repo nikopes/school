@@ -1,0 +1,16 @@
+build_cache:
+    compilation_count_since_last_purge: 7
+cache:
+    builder-api:
+        v3/boards/byvid/pid/0x10c4/0xea60:
+            data: "null"
+            ts: 2025-02-11T09:47:39.5693105+02:00
+        v3/boards/byvid/pid/0x0403/0x6001:
+            data: "null"
+            ts: 2025-02-11T09:33:52.099103+02:00
+        v3/boards/byvid/pid/0x2341/0x8054:
+            data: '[{"name":"Arduino MKR WiFi 1010","fqbn":"arduino:samd:mkrwifi1010"}]'
+            ts: "2023-10-30T11:41:40.2500742+02:00"
+installation:
+    id: 12dac417-eea7-4507-8f09-5e8d79c296ba
+    secret: ca371fa4-d794-436c-97ca-49f37cb62aa2

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Main element schema -->
+  <xs:element name="job_scheduler">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="options" type="options_type" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="tasks" type="tasks_type" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="commands" type="commands_type" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="schema_version" type="xs:positiveInteger" fixed="29"/>
+      <xs:attribute name="lowest_compatible_version" type="xs:positiveInteger" fixed="28"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- Utility Types -->
+  <xs:simpleType name="controller_name">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[a-zA-Z0-9][a-zA-Z0-9_ ]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="controller_name_list">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="([a-zA-Z0-9][a-zA-Z0-9_ ]*)(,[a-zA-Z0-9][a-zA-Z0-9_ ]*)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FileSystemPath">
+    <xs:restriction base="xs:string">
+      <!-- Provided for differentiation of a path from a plain string (for property control setup) -->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FileSystemPathWithMacros">
+    <xs:restriction base="xs:string">
+      <!-- Provided for differentiation of a path from a plain string (for property control setup) -->
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- Major types -->
+  <xs:complexType name="options_type">
+    <xs:all>
+      <xs:element name="NoQueue" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NoLocalJobs" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NoRemoteJobs" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="TokensOnly" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="EnforceProcessorExclusive" default="false" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="ControllerName" type="xs:token" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="QueueNameOverride" type="xs:token" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="QueueTypeOverride" type="queue_type_enum" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="LocalPriority" type="local_priority_type" default="Automatic" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="StartedBy" type="xs:token" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NoIPCLogging" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="MaxProcessors" type="num_processors_type" default="Logical" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="MaxRunningJobs" type="num_jobs_type" default="1" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="TaskRootDataPath" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="TaskRootExePath" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="SettingsFolder" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="TokenizeCommandPaths" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="EnableParallelJobs" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PreferredNumJobs" type="xs:integer" default="0" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="JobLicenseThreadLimit" type="xs:integer" default="0" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="LocalComputePerformance" type="gradient_param_value" default="high" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="LocalMemoryCapacity" type="gradient_param_value" default="high" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="LicenseFile" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="LicenseVendor" type="license_vendor_type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Verbose" type="xs:boolean" default="true" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DebugLogging" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="EnableIPCLoggingServer" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DebugOverrideMode" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DebugIPCForwarding" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="AllowLowerVersionBuilds" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="ExitTimeout" type="xs:integer" default="0" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DeferredMessageDispatchDelay" type="xs:integer" default="100" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RunAsService" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DisableDirectCopy" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DisableMessageForwarding" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DisableJobFileDelete" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="ReservedSystemMemory" type="memory_value_type" default="2GB" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="JobArchiveInterval" type="time_interval_value_type" default="1hour" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="JobMaxCompletedAge" type="time_interval_value_type" default="2days" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="JobMaxReportedAge" type="time_interval_value_type" default="2hours" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="JobMaxArchivedAge" type="time_interval_value_type" default="30days" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="MaxLogFileAge" type="time_interval_value_type" default="14days" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="OverrideTokenOnlyRestriction" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+    <xs:attribute name="controller" type="controller_name_list"/>
+  </xs:complexType>
+
+  <xs:complexType name="tokens_collection_type">
+    <xs:sequence>
+      <xs:element name="token" type="token_type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="controller" type="controller_name_list"/>
+  </xs:complexType>
+
+  <xs:complexType name="tasks_type">
+    <xs:complexContent>
+      <xs:extension base="tokens_collection_type"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="commands_type">
+    <xs:complexContent>
+      <xs:extension base="tokens_collection_type"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <!-- Support Types: -->
+  <xs:simpleType name="local_priority_type">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="LocalFirst"/>
+      <xs:enumeration value="RemoteLast"/>
+      <xs:enumeration value="RemoteFirst"/>
+      <xs:enumeration value="LocalLast"/>
+      <xs:enumeration value="Automatic"/>
+      <xs:enumeration value="Sorted"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="license_vendor_type">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Auto"/>
+      <xs:enumeration value="AWR"/>
+      <xs:enumeration value="Cadence"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="queue_type_enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Compute"/>
+      <xs:enumeration value="Scheduler"/>
+      <xs:enumeration value="auto-detect"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="gradient_param_value">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="auto-detect"/>
+      <!--<xs:enumeration value="low"/>-->
+      <xs:enumeration value="normal"/>
+      <!--<xs:enumeration value="above normal"/>-->
+      <!--<xs:enumeration value="fairly high"/>-->
+      <xs:enumeration value="high"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="num_processors_type">
+    <xs:union memberTypes="proc_val_bynum proc_val_bystring" />
+  </xs:simpleType>
+
+  <xs:simpleType name="proc_val_bynum">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="4096"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="proc_val_bystring">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Logical"/>
+      <xs:enumeration value="Physical"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="memory_raw_value_type">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="memory_specified_value_type">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="([0-9]+)(%|B|MB|GB|TB|PB|EB|b|mb|gb|tb|pb|eb)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="memory_value_type">
+    <xs:union memberTypes="memory_raw_value_type memory_specified_value_type xs:decimal" />
+  </xs:simpleType>
+
+  <xs:simpleType name="time_interval_abrev_value_type">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="([0-9]+)(s|m|h|d|w|m|y)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="time_interval_multiple_value_type">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="(0*([2-9])|(0*[0-9]*[1-9][0-9]*[0-9]))[ ]*(seconds|minutes|hours|days|weeks|months|years)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="time_interval_single_value_type">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="(0*1)[ ]*(second|minute|hour|day|week|month|year)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="time_interval_value_type">
+    <xs:union memberTypes="time_interval_abrev_value_type time_interval_multiple_value_type time_interval_single_value_type" />
+  </xs:simpleType>
+
+  <xs:simpleType name="num_jobs_type">
+    <xs:union memberTypes="jobs_val_bynum jobs_val_bystring" />
+  </xs:simpleType>
+
+  <xs:simpleType name="jobs_val_bynum">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="4096"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="jobs_val_bystring">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Unlimited"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="versioned_path">
+    <xs:simpleContent>
+      <xs:extension base="FileSystemPathWithMacros">
+        <xs:attribute name="version" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="LoadPaths_type">
+    <xs:sequence>
+      <xs:element name="RootRegKey" type="xs:token" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Path" type="versioned_path" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="os_priority_type">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Default"/>
+      <xs:enumeration value="Low"/>
+      <xs:enumeration value="BelowNormal"/>
+      <xs:enumeration value="Normal"/>
+      <xs:enumeration value="AboveNormal"/>
+      <xs:enumeration value="High"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="remote_pref_type">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Local Only"/>
+      <xs:enumeration value="Prefer Local"/>
+      <xs:enumeration value="Remote Only"/>
+      <xs:enumeration value="Prefer Remote"/>
+      <xs:enumeration value="Any Available"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="token_type">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:token" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Path" type="versioned_path" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="LoadPaths" type="LoadPaths_type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Task" type="xs:token" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="CmdArgsTemplate" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Priority" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Duration" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="EnvVars" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="EnvVarAction" type="xs:token" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="WorkingDirectory" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DataDirectory" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NumProcessorsMin" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NumProcessorsMax" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="ThreadsPerProcessor" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="CoreExclusive" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="AskedNodes" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RunTimeLimit" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RunUntilCanceled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NodeExclusive" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Rerunnable" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Remotable" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Checkpointable" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="StdInFile" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="StdOutFile" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="StdErrFile" type="FileSystemPath" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="SaveStderrOnFail" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="OSPriority" type="os_priority_type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RemotePreference" type="remote_pref_type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PerformancePreference" type="gradient_param_value" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="MemCapPreference" type="gradient_param_value" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NumNodesMax" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="UIToolName" type="xs:token" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RelaxBuildNumRestrictions" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

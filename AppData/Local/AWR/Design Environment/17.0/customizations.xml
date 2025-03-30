@@ -1,0 +1,47 @@
+<MWOffice Name="Customizations" Version="1">
+	<Settings>
+		<Toolbars1>
+			<Toolbar0 Id="200" VisibleUnlinkedView="-1" VisibleLinkedView="0"/>
+			<Toolbar1 Id="201" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar2 Id="202" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar3 Id="203" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar4 Id="204" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar5 Id="205" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar6 Id="206" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar7 Id="207" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar8 Id="208" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar9 Id="209" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar10 Id="210" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar11 Id="211" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar12 Id="212" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar13 Id="213" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar14 Id="214" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar15 Id="215" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar16 Id="217" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar17 Id="218" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar18 Id="219" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar19 Id="220" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar20 Id="221" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar21 Id="222" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar22 Id="223" VisibleUnlinkedView="0" VisibleLinkedView="-1"/>
+			<Toolbar23 Id="224" VisibleUnlinkedView="-1" VisibleLinkedView="0"/>
+			<Toolbar24 Id="225" VisibleUnlinkedView="-1" VisibleLinkedView="0"/>
+		</Toolbars1>
+		<UserAttributes SortColumn="0" SortState="2" IntelliListFilterId="0" FilterListFilterId="0"/>
+		<InsertWindowDlg SortColumn="1" SortState="0" IntelliListFilterId="0" FilterListFilterId="0"/>
+		<OpenProjectItem SortColumn="1" SortState="0" IntelliListFilterId="-1" FilterListFilterId="-1"/>
+	</Settings>
+	<Usage>
+		<Projects>
+			<File Name="C:\Users\nps_9\OneDrive\Asiakirjat\AWR Projects\lumped 1.emp" Pin="0" Uses="3" Accessed="45602.39372685184935"/>
+			<File Name="C:\Users\nps_9\OneDrive\Työpöytä\Niko Salmelainen matching exam.emp" Pin="0" Uses="4" Accessed="45541.44006944444118"/>
+			<File Name="C:\Users\nps_9\Downloads\Niko Salmelainen matching exam.emp" Pin="0" Uses="2" Accessed="45541.43967592592526"/>
+			<File Name="C:\Users\nps_9\Downloads\Niko Salmelainen matching exam (1).emp" Pin="0" Uses="1" Accessed="45541.44030092592584"/>
+			<File Name="C:\Users\nps_9\OneDrive\Asiakirjat\AWR Projects\Niko Salmelainen BLH WPD HW.emp" Pin="0" Uses="3" Accessed="45546.54954861111037"/>
+			<File Name="C:\Users\nps_9\OneDrive\Työpöytä\Niko Salmelainen WPD.emp" Pin="0" Uses="3" Accessed="45546.59356481481518"/>
+			<File Name="C:\Users\nps_9\OneDrive\Työpöytä\Niko Salmelainen BLH.emp" Pin="0" Uses="3" Accessed="45546.59392361110804"/>
+			<File Name="C:\Users\nps_9\Downloads\Niko Salmelainen BLH.emp" Pin="0" Uses="1" Accessed="45546.59422453703883"/>
+		</Projects>
+	</Usage>
+</MWOffice>
+

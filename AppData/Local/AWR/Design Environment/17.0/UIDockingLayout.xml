@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LastLayout2 CompactMode="1">
+	<DockingLayout>
+		<Summary Panes="10" TopContainer="5" Client="9"/>
+		<Pane-1 Type="0" DockingCX="200" DockingCY="120" Title="Status Window\n\n" ID="104" IconID="10" DockingHolder="10" LastHolder="10"/>
+		<Pane-2 Type="0" DockingCX="200" DockingCY="120" Title="Project\n\n" ID="105" IconID="11" DockingHolder="6" LastHolder="6"/>
+		<Pane-3 Type="0" DockingCX="200" DockingCY="120" Title="Elements\n\n" ID="101" IconID="12" DockingHolder="6" LastHolder="6"/>
+		<Pane-4 Type="0" DockingCX="200" DockingCY="120" Title="Layout\n\n" ID="102" IconID="13" DockingHolder="6" LastHolder="6"/>
+		<Pane-5 Type="2" DockingCX="1536" Horiz="1" Panes="2" Pane-1="6" Pane-2="7"/>
+		<Pane-6 Type="1" DockingCX="359" DockingCY="120" Panes="3" Selected="2" Pane-1="2" Pane-2="3" Pane-3="4"/>
+		<Pane-7 Type="2" DockingCX="770" Panes="2" Pane-1="8" Pane-2="10"/>
+		<Pane-8 Type="2" DockingCY="234" Horiz="1" Panes="1" Pane-1="9"/>
+		<Pane-9 Type="4"/>
+		<Pane-10 Type="1" DockingCX="200" DockingCY="236" Panes="1" Selected="1" Pane-1="1"/>
+	</DockingLayout>
+</LastLayout2>
