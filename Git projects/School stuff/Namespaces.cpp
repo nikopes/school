@@ -24,14 +24,14 @@ int main() {
     using namespace MathOperations; // Use the MathOperations namespace
     using namespace TextOperations; // Use the TextOperations namespace
 
-    int x, y;   // Declare integer variables for the numbers to be added
+    int x1, y1;   // Declare integer variables for the numbers to be added
     string a, b;   // Declare string variables for the words to be concatenated
 
     cout << "Please give number x: ";  // Ask the user for an input
-    cin >> x;                          // Get the input from the user
+    cin >> x1;                          // Get the input from the user
     cout << "Please give number y: ";  // Ask the user for another input
-    cin >> y;             // Get the input from the user
-    cout << "The sum of x and y is: " << add(x, y) << "\n";  // Print the sum of x and y
+    cin >> y1;             // Get the input from the user
+    cout << "The sum of x and y is: " << add(x1, y1) << "\n";  // Print the sum of x and y
 
     cout << "Please give a word: ";  // Ask the user for an input
     cin >> a;                        // Get the input from the user
